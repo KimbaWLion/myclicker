@@ -82,7 +82,7 @@
             <td>
 
               <label for="Class Name">  Class Name: </label>
-              <input type="text" name="create-classname-input" id="create-class-name-input" />
+              <input type="text" name="create-classname-input" id="create-classname-input" />
               <label for="Term">  Term: </label>
               <input type="radio" name="create-term-input" id="create-term-input-spring">
                 Spring <input type="radio" name="create-term-input" id="create-term-input-fall">
@@ -221,14 +221,14 @@
     //function that performed as soon as the web page is loaded: for fetching information, enable a timer, etc.
     window.onload = Main();
     function Main() {
-    alert("hello");  //you can comment this out: but I left it in because it's a quick way to tell if your Javascript is broken (missing/extra quotation marks, semicolons, etc.
+    alert("hi");  //you can comment this out: but I left it in because it's a quick way to tell if your Javascript is broken (missing/extra quotation marks, semicolons, etc.
     Refresh();
     
     }
     
     function Refresh() {
-       execute("user_get_course_p");
-       execute("user_get_course_s");
+       Submit("user_get_course_p");
+       Submit("user_get_course_s");
        createVisible();
     }
 
@@ -248,7 +248,7 @@
          //Or, you can comment out this for loop
        for (var i=1; i < arguments.length; i++) {
   				if (arguments[i])
-  					url += "&str"+i+"=" + arguments[i];  //this adds the argument to the GET parameters
+  					url += "&str"+i+"=" + document.getElementById(arguments[i]).value;  //this adds the argument to the GET parameters
            //document.getElementById(arguments[i]).value;  //This adds the contents of an HTML object with id 'arguments[i]' as an argument to GET parameters
        }
     //Will not be used unless we're making POST requests
@@ -384,7 +384,7 @@
     
     function NewCourse() {   
       ReadCreateTerm();
-      Submit("sub_course", "create-class-name-input", "create-term-value",  "create-year-input");
+      //Submit("sub_course", "create-classname-input", "create-term-value",  "create-year-input");
     }
     
     function ChangeCreateTerm(term) {
